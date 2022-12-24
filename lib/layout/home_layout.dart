@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/layout/Anim_search_bar.dart';
 import 'package:news_app/models/category.dart';
 import 'package:news_app/screens/categories_screen.dart';
 import 'package:news_app/screens/drawer_widget.dart';
@@ -41,6 +42,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           backgroundColor: colorGreen,
           centerTitle: true,
           title: Text('News'),
+          actions: [
+            SearchBarAnim(),
+          ],
         ),
         body:SelectedCategorItem == null?CategoriesScreen
           (SelectedCategoryCallBack) : HomeScreen(SelectedCategorItem!),

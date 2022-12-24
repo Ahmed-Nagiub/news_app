@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   cached_network_image: ^3.2.3
+  animation_search_bar: ^0.0.10
 
 
 dev_dependencies:
