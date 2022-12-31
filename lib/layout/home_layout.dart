@@ -43,7 +43,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           centerTitle: true,
           title: Text('News'),
           actions: [
-            SearchBarAnim(),
+            SelectedCategorItem != null? SearchBarAnim(true):SearchBarAnim(false),
           ],
         ),
         body:SelectedCategorItem == null?CategoriesScreen
@@ -52,7 +52,9 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
+
   Category? SelectedCategorItem = null;
+
 
   void whenOpenDrawer(selectedNumber){
     if(selectedNumber==DrawerWidget.CATEGORY_NUMBER){
