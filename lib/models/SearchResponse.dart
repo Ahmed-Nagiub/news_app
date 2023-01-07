@@ -14,13 +14,13 @@ class SearchResponse {
     if (json['articles'] != null) {
       articles = [];
       json['articles'].forEach((v) {
-        articles?.add(Articles.fromJson(v));
+        articles?.add(SearchArticles.fromJson(v));
       });
     }
   }
   String? status;
   num? totalResults;
-  List<Articles>? articles;
+  List<SearchArticles>? articles;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -43,8 +43,8 @@ class SearchResponse {
 /// publishedAt : "2022-12-21T19:31:41Z"
 /// content : "Even Santas fictional house is going up in price. \r\nZillow said Kris Kringles 3-bedroom, 2-bathroom North Pole property is now worth $1,154,137 an increase of 12% over the past year. The home has soa… [+1194 chars]"
 
-class Articles {
-  Articles({
+class SearchArticles {
+  SearchArticles({
       this.source, 
       this.author, 
       this.title, 
@@ -54,7 +54,7 @@ class Articles {
       this.publishedAt, 
       this.content,});
 
-  Articles.fromJson(dynamic json) {
+  SearchArticles.fromJson(dynamic json) {
     source = json['source'] != null ? Source.fromJson(json['source']) : null;
     author = json['author'];
     title = json['title'];

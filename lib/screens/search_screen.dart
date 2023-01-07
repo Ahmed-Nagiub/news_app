@@ -5,14 +5,13 @@ import '../shared/network/remote/api_manager.dart';
 
 class SearchScreen extends StatelessWidget {
 
-  Articles articles;
-
-  SearchScreen(this.articles);
+  String query;
+  SearchScreen(this.query);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SearchResponse>(
-        future: ApiManager.searchInAll(articles.title!),
+        future: ApiManager.searchInAll(query),
         builder: (context, snapshot) {
           if(snapshot.connectionState== ConnectionState.waiting){
             return Center(child: CircularProgressIndicator(),);
@@ -22,19 +21,19 @@ class SearchScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text('Something Went Wrong'),
-                  TextButton(onPressed: (){
-
-                  }, child: Text('Try Again'),),
+                  TextButton(onPressed: (){}, child: Text('Try Again'),),
                 ],
               ),
             );
           }
           var articles = snapshot.data?.articles??[];
-          return ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) {
-                return SearchItem();
-              },);
+          return Expanded(
+            child: ListView.builder(
+                itemCount: articles.length,
+                itemBuilder: (context, index) {
+                  return SearchItem(articles[index]);
+                },),
+          );
         },);
   }
 }
